@@ -17,7 +17,23 @@ stages:
           - script: |
               pwd
               ls
-              gradle build
+              gradle npmBuild
             displayName: 'gradle build'
             
-          
+  - stage: publish
+    displayName: 'Publish to Artifacts'
+    jobs:
+      - job: publish
+        pool:
+         name: 'bit2'
+         demands:
+          - agent.name -equals react-frontend
+        displayName: 'gradle build'
+        steps:
+        - task: PublishBuildArtifacts@1
+          inputs:
+            PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+            ArtifactName: 'hello-world'
+            publishLocation: 'Container'
+            StoreAsTar: true
+
