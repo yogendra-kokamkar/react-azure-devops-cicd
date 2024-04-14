@@ -7,12 +7,12 @@ pool:
   name: 'bit2'
 
 stages:
-  - stage: check
-    displayName: 'check'
+  - stage: build
+    displayName: 'gradle build'
     jobs:
-      - job: check
-        displayName: 'check'
+      - job: build
+        displayName: 'gradle build'
         steps:
           - script: |
-              pwd
-            displayName: 'check directory'
+              sudo gradle build
+            displayName: 'gradle build'
