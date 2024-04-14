@@ -1,0 +1,23 @@
+trigger:
+ paths:
+   include:
+     - src/*
+
+stages:
+  - stage: build
+    displayName: 'gradle build'
+    jobs:
+      - job: build
+        pool:
+         name: 'bit2'
+         demands:
+          - agent.name -equals react-frontend
+        displayName: 'gradle build'
+        steps:
+          - script: |
+              pwd
+              ls
+              sudo gradle build --stacktrace
+            displayName: 'gradle build'
+            
+          
