@@ -56,6 +56,6 @@ stages:
             downloadPath: '$(Pipeline.Workspace)/artifact'
         - script: |
             cp -r $(Pipeline.Workspace)/artifact/* /home/yogendra/publish
-            cd build
+            cd /home/yogendra/publish/build
             tar -xvf *.tar
           displayName: 'Copy artifact to destination folder'
