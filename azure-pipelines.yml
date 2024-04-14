@@ -17,7 +17,7 @@ stages:
           - script: |
               pwd
               ls
-              sudo gradle build --stacktrace
+              gradle build
             displayName: 'gradle build'
             
           
