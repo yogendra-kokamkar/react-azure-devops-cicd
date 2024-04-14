@@ -61,3 +61,19 @@ stages:
             rm -rf *.tar
           displayName: 'Copy artifact to destination folder'
   
+  - stage: Deploy
+    displayName: 'Deploy Application'
+    jobs:
+      - job: Deploy
+        pool:
+         name: 'bit2'
+         demands:
+          - agent.name -equals clipboard
+        displayName: 'Deploy Application'
+        steps:
+        - checkout: none
+        - script: |
+            cd /etc/nginx/sites-available
+            sudo sed -i 's|root /home/yogendra/publish/build_2;|root /home/yogendra/publish/build;|' default
+            sudo systemctl restart nginx
+          displayName: 'Deploy Application via Ngixn'
