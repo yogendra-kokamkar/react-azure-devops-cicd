@@ -1,0 +1,18 @@
+trigger:
+ paths:
+   include:
+     - src/*
+
+pool:
+  name: 'bit2'
+
+stages:
+  - stage: check
+    displayName: 'check'
+    jobs:
+      - job: check
+        displayName: 'check'
+        steps:
+          - script: |
+              pwd
+            displayName: 'check directory'
