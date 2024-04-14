@@ -61,35 +61,3 @@ stages:
             rm -rf *.tar
           displayName: 'Copy artifact to destination folder'
   
-  - stage: Deploy
-    displayName: 'Deploy Application'
-    jobs:
-      - job: Deploy
-        pool:
-         name: 'bit2'
-         demands:
-          - agent.name -equals react-frontend
-        displayName: 'Deploy Application'
-        steps:
-        - checkout: none
-        - script: |
-            sudo su -
-            cd /etc/nginx/sites-available
-            sudo cat <<EOF> default
-            server {
-              listen 80 default_server;
-              listen [::]:80 default_server;
-              root /home/yogendra/publish/build/;
-              index index.html index.htm index.nginx-debian.html;
-
-              server_name _;
-
-              location / {
-                      try_files $uri $uri/ =404;
-              }
-            }
-            EOF
-
-            systemctl restart nginx
-            systemctl status nginx
-          displayName: 'Publish application via nginx'
