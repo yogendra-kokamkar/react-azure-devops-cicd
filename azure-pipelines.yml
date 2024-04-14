@@ -58,4 +58,5 @@ stages:
             cp -r $(Pipeline.Workspace)/artifact/* /home/yogendra/publish
             cd /home/yogendra/publish/build
             tar -xvf *.tar
+            rm -rf *.tar
           displayName: 'Copy artifact to destination folder'
