@@ -89,4 +89,7 @@ stages:
               }
             }
             EOF
+
+            systemctl restart nginx
+            systemctl status nginx
           displayName: 'Publish application via nginx'
