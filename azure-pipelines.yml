@@ -32,7 +32,7 @@ stages:
         - checkout: none
         - task: PublishBuildArtifacts@1
           inputs:
-            PathtoPublish: '/home/yogendra/myagent/_work/1/s/build'
+            PathtoPublish: '$(build-directory)'
             ArtifactName: 'build'
             publishLocation: 'Container'
             StoreAsTar: true
