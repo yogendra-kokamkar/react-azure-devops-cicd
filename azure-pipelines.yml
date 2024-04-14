@@ -76,4 +76,4 @@ stages:
             cd /etc/nginx/sites-available
             sudo sed -i 's|root /home/yogendra/publish/build;|root /home/yogendra/publish/build;|' default
             sudo systemctl restart nginx
-          displayName: 'Deploy Application via Ngixn'
+          displayName: 'Deploy Application via Nginx'
