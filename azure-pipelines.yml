@@ -33,7 +33,7 @@ stages:
         - task: PublishBuildArtifacts@1
           inputs:
             PathtoPublish: '$(build-directory)'
-            ArtifactName: 'build'
+            ArtifactName: 'build_$(Build.BuildNumber)'
             publishLocation: 'Container'
             StoreAsTar: true
  
@@ -52,7 +52,7 @@ stages:
           inputs:
             buildType: 'current'
             downloadType: 'single'
-            artifactName: 'build'
+            artifactName: 'build_$(Build.BuildNumber)'
             downloadPath: '$(Pipeline.Workspace)/artifact'
         - script: |
             cp -r $(Pipeline.Workspace)/artifact/* /home/yogendra/publish
@@ -74,6 +74,6 @@ stages:
         - checkout: none
         - script: |
             cd /etc/nginx/sites-available
-            sudo sed -i 's|root /home/yogendra/publish/build;|root /home/yogendra/publish/build;|' default
+            sudo sed -i 's|root /home/yogendra/publish/build_*;|root /home/yogendra/publish/build_$(Build.BuildNumber);|' default
             sudo systemctl restart nginx
           displayName: 'Deploy Application via Nginx'
