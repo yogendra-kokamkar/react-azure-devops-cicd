@@ -36,4 +36,24 @@ stages:
             ArtifactName: 'build'
             publishLocation: 'Container'
             StoreAsTar: true
-
+ 
+  - stage: CopyArtifact
+    displayName: 'Copy Artifact'
+    jobs:
+      - job: copy
+        pool:
+         name: 'bit2'
+         demands:
+          - agent.name -equals react-frontend
+        displayName: 'Copy Artifact'
+        steps:
+        - checkout: none
+        - task: DownloadBuildArtifacts@0
+          inputs:
+            buildType: 'current'
+            downloadType: 'single'
+            artifactName: 'build'
+            downloadPath: '$(Pipeline.Workspace)/artifact'
+        - script: |
+            cp -r $(Pipeline.Workspace)/artifact/* /home/yogendra/publish
+          displayName: 'Copy artifact to destination folder'
