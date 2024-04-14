@@ -29,6 +29,7 @@ stages:
           - agent.name -equals react-frontend
         displayName: 'Publish Artifact'
         steps:
+        - checkout: none
         - task: PublishBuildArtifacts@1
           inputs:
             PathtoPublish: '$(Build.ArtifactStagingDirectory)'
