@@ -44,7 +44,7 @@ stages:
         pool:
          name: 'bit2'
          demands:
-          - agent.name -equals react-frontend
+          - agent.name -equals clipboard
         displayName: 'Copy Artifact'
         steps:
         - checkout: none
