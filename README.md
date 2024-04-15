@@ -1,140 +1,45 @@
-<h1 align="center">New React App</h1>
+# Frontend React Application Deployment Pipeline
 
-<br />
+This repository contains the Azure DevOps pipeline setup to deploy a frontend React application. The pipeline automates the process of building the application, storing the artifacts, and deploying it using NGINX on a deployment server.
 
-This is a blank README file that you can customize at your needs.\
-Describe your project, how it works and how to contribute to it.
+## Pipeline Steps
 
-<br />
+1. **Checkout Code from GitHub**: The pipeline starts by fetching the source code from the GitHub repository.
 
-# 🚀 Available Scripts
+2. **Build Process**: The code is built using Gradle and npm to compile the necessary dependencies.
 
-In the project directory, you can run:
+3. **Artifact Creation**: Once the build process is completed, the application build is stored as an artifact. This artifact contains the compiled code ready for deployment.
 
-<br />
+4. **Deployment**: The artifact is then copied to a deployment server. On the deployment server, NGINX is configured to serve the application. Users can access the deployed application via the deployment server's IP address or domain name.
 
-## ⚡️ start
+## Prerequisites
 
-```
-yarn start
-```
+Before running the pipeline, ensure the following prerequisites are met:
 
-or
+- Azure DevOps account with appropriate permissions to create and manage pipelines.
+- Access to a build server capable of running Gradle and npm.
+- A deployment server configured with NGINX to host the React application.
 
-```
-yarn start
-```
+## Pipeline Configuration
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+To set up the pipeline in your Azure DevOps environment, follow these steps:
 
-<br />
+1. **Clone Repository**: Clone this repository to your local machine or fork it directly within your GitHub account.
 
-## 🧪 test
+2. **Azure DevOps Configuration**: Log in to your Azure DevOps account and create a new pipeline.
 
-```
-yarn test
-```
+3. **Pipeline Setup**: Choose the appropriate repository (the one you cloned or forked) and configure the pipeline to trigger on changes to the master branch.
 
-or
+4. **Pipeline Tasks**: Define the pipeline tasks as described in the pipeline steps above. Ensure proper configuration for checking out code, building the application, and deploying it to the deployment server.
 
-```
-yarn test
-```
+5. **Variables**: Set any necessary environment variables or pipeline variables required for the deployment process.
 
-Launches the test runner in the interactive watch mode.
+6. **Run Pipeline**: Once configured, trigger the pipeline manually or wait for changes to the master branch to automatically trigger it.
 
-<br />
+## Contributing
 
-## 🦾 build
+Contributions are welcome! If you find any issues or have suggestions for improvement, feel free to open an issue or submit a pull request.
 
-```
-yarn build
-```
+## License
 
-or
-
-```
-yarn build
-```
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.
-
-<br />
-
-## 🧶 lint
-
-```
-yarn lint
-```
-
-or
-
-```
-yarn lint
-```
-
-Creates a `.eslintcache` file in which ESLint cache is stored. Running this command can dramatically improve ESLint's running time by ensuring that only changed files are linted.
-
-<br />
-
-## 🎯 format
-
-```
-yarn format
-```
-
-or
-
-```
-yarn format
-```
-
-Checks if your files are formatted. This command will output a human-friendly message and a list of unformatted files, if any.
-
-<br />
-
-# 🧬 Project structure
-
-This is the structure of the files in the project:
-
-```sh
-    │
-    ├── public                  # public files (favicon, .htaccess, manifest, ...)
-    ├── src                     # source files
-    │   ├── components
-    │   ├── pages
-    │   ├── resources           # images, constants and other static resources
-    │   ├── store               # Redux store
-    │   │   ├── actions         # store's actions
-    │   │   └── reducers        # store's reducers
-    │   ├── styles
-    │   ├── tests               # all test files
-    │   ├── types               # data interfaces
-    │   ├── utility             # utilities functions and custom components
-    │   ├── App.tsx
-    │   ├── index.tsx
-    │   ├── react-app-env.d.ts
-    │   ├── RootComponent.tsx   # React component with all the routes
-    │   ├── serviceWorker.ts
-    │   └── setupTests.ts
-    ├── .eslintrc.js
-    ├── .gitignore
-    ├── .prettierrc
-    ├── package.json
-    ├── README.md
-    └── tsconfig.json
-```
-
-# 📖 Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-#
-
-<p align="center">Bootstrapped with Create React App.</p>
+This project is licensed under the [MIT License](LICENSE).
