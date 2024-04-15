@@ -1,6 +1,8 @@
 # Frontend React Application Deployment Pipeline
 
 This repository contains the Azure DevOps pipeline setup to deploy a frontend React application. The pipeline automates the process of building the application, storing the artifacts, and deploying it using NGINX on a deployment server.
+![react-azure-devops-cicd-diagram](https://github.com/yogendra-kokamkar/react-azure-devops-cicd/assets/55878086/f4bf1f29-bde5-49e7-9bed-017d4ed31c66)
+
 
 ## Pipeline Steps
 
@@ -11,6 +13,9 @@ This repository contains the Azure DevOps pipeline setup to deploy a frontend Re
 3. **Artifact Creation**: Once the build process is completed, the application build is stored as an artifact. This artifact contains the compiled code ready for deployment.
 
 4. **Deployment**: The artifact is then copied to a deployment server. On the deployment server, NGINX is configured to serve the application. Users can access the deployed application via the deployment server's IP address or domain name.
+
+![reacft-pipeline-run](https://github.com/yogendra-kokamkar/react-azure-devops-cicd/assets/55878086/71979fb5-550e-4e3f-b56f-2f0fe8d22f7c)
+
 
 ## Prerequisites
 
@@ -35,6 +40,11 @@ To set up the pipeline in your Azure DevOps environment, follow these steps:
 5. **Variables**: Set any necessary environment variables or pipeline variables required for the deployment process.
 
 6. **Run Pipeline**: Once configured, trigger the pipeline manually or wait for changes to the master branch to automatically trigger it.
+
+7. **Access Application**: We can access the application via Deployment's server IP.
+
+![react-app](https://github.com/yogendra-kokamkar/react-azure-devops-cicd/assets/55878086/4ab149bc-f189-427b-9045-bfa722cb501b)
+
 
 ## Contributing
 
