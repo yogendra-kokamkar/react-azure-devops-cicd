@@ -1,0 +1,11 @@
+#Stage 1
+FROM node:latest AS build
+WORKDIR /app
+COPY . .
+RUN npm install
+
+#Stage 2
+FROM node:21-slim
+COPY --from=build /app .
+EXPOSE 3000
+CMD ["npm", "start"]
